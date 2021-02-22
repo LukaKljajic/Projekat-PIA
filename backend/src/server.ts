@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
+import employee from './model/employee';
 
 const app = express();
 app.use(cors())
@@ -14,6 +15,13 @@ conn.once('open', () => {
 })
 
 const router = express.Router()
+
+router.route('/getAllEmployees').get((req, res) => {
+  employee.find({}, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
 
 app.use('/', router)
 app.listen(4000, () => console.log(`Express server running on port 4000`));
