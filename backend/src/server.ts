@@ -3,6 +3,10 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import employee from './model/employee';
+import subject from './model/subject';
+import news from './model/news';
+import newsCategory from './model/newsCategory';
+import studentProjects from './model/studentProjects';
 
 const app = express();
 app.use(cors())
@@ -18,6 +22,57 @@ const router = express.Router()
 
 router.route('/getAllEmployees').get((req, res) => {
   employee.find({}, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/getSubjectsForEmployee').post((req, res) => {
+  let username = req.body.username
+
+  subject.find({ $or: [{ 'theoryTeachers': username }, {'practicalTeachers': username} ]}, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/getAllNews').get((req, res) => {
+  news.find({}, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/getNameForCategoryNumber').post((req, res) => {
+  let number = req.body.number
+
+  newsCategory.findOne({ 'number': number }, (err, data) => {
+    if (err) console.log(err)
+    else {
+      res.json(data)
+    }
+  })
+})
+
+router.route('/getAllSubjectsForDepartment').post((req, res) => {
+  let department = req.body.department
+
+  subject.find({ 'department': department }, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/getSubjectByCode').post((req, res) => {
+  let code = req.body.code
+  subject.findOne({ 'code': code }, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/getAllStudentProjects').get((req, res) => {
+  studentProjects.find({}, (err, data) => {
     if (err) console.log(err)
     else res.json(data)
   })

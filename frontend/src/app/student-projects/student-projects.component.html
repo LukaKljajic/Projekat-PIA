@@ -1,0 +1,14 @@
+<table class="table">
+    <thead>
+        <th>Предмет</th>
+        <th>Тема</th>
+        <th>Тип</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let studentProject of studentProjects">
+            <td>{{studentProject.subjectName}}</td>
+            <td>{{studentProject.theme}}</td>
+            <td>{{studentProject.type}}</td>
+        </tr>
+    </tbody>
+</table>

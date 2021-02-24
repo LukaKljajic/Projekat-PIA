@@ -12,4 +12,11 @@ export class EmployeeService {
   getAllEmployees() {
     return this.http.get(`${this.uri}/getAllEmployees`)
   }
+
+  getSubjectsForEmployee(username: string) {
+    const data = {
+      username: username
+    }
+    return this.http.post(`${this.uri}/getSubjectsForEmployee`, data)
+  }
 }

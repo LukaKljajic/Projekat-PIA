@@ -15,23 +15,24 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <a routerLink="" class="nav-link" routerLinkActive="active">Почетна</a>
+                    <a routerLink="mainPage" class="nav-link" routerLinkActive="active">Почетна</a>
                     <a routerLink="employees" class="nav-link" routerLinkActive="active">Запослени</a>
-                    <a routerLink="" class="nav-link">Обавештења</a>
+                    <a routerLink="news" class="nav-link" routerLinkActive="active">Обавештења</a>
                     <div class="btn-group">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="first">Основне студије</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="first" routerLink="subjects" routerLinkActive="active">Студије</a>
                         <div class="dropdown-menu" aria-labelledby="first">
-                            <a routerLink="" class="dropdown-item">Одсек за рачунарску технику и информатику</a>
-                            <a routerLink="" class="dropdown-item">Одсек за софтверско инжењерство</a>
-                            <a routerLink="" class="dropdown-item">Остали одсеци</a>
+                            <a routerLink="subjects" class="dropdown-item" (click)="saveType('RTI')">Одсек за рачунарску технику и информатику</a>
+                            <a routerLink="subjects" class="dropdown-item" (click)="saveType('SI')">Одсек за софтверско инжењерство</a>
+                            <a routerLink="subjects" class="dropdown-item" (click)="saveType('others')">Остали одсеци</a>
+                            <div class="dropdown-divider"></div>
+                            <a routerLink="subjects" class="dropdown-item" (click)="saveType('master')">Мастер студије</a>
                         </div>
                     </div>
-                    <a routerLink="" class="nav-link">Мастер студије</a>
-                    <a routerLink="" class="nav-link">Пројекти</a>
+                    <a routerLink="studentProjects" class="nav-link" routerLinkActive="active">Пројекти</a>
                     <div class="btn-group">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="second">Наука</a>
                         <div class="dropdown-menu" aria-labelledby="second">
-                            <a routerLink="" class="dropdown-item">Истраживања</a>
+                            <a routerLink="explore" class="dropdown-item">Истраживања</a>
                             <a routerLink="" class="dropdown-item">Пројекти</a>
                         </div>
                     </div>
@@ -59,7 +60,9 @@
         </div>
     </div>
     <div class="row" id="content">
-        <router-outlet></router-outlet>
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
     </div>
     <div class="row text-center" id="footer">
         <div class="col">

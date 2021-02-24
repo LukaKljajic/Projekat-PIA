@@ -1,0 +1,9 @@
+table{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: antiquewhite;
+    margin: auto;
+}
+
+table tr{
+    border-top: 1px solid white;
+}

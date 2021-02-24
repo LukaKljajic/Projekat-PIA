@@ -1,3 +1,5 @@
+import { Subject } from '../model/subject.model';
+
 export class Employee{
   username: string
   password: string
@@ -11,5 +13,5 @@ export class Employee{
   cabinetNumber: number
   active: boolean
   picture: string
-  subjects: Array<string>
+  subjects: Array<Subject>
 }

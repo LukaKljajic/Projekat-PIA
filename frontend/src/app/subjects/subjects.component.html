@@ -1,0 +1,21 @@
+<table class="table">
+    <caption>{{fullDepartmentName}}</caption>
+    <thead>
+        <th>Име</th>
+        <th>Семестар</th>
+        <th>Тип</th>
+        <th>Код</th>
+        <th>ЕСПБ</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let subject of subjects">
+            <td>
+                <a routerLink="../subject" (click)='saveSubject(subject)'>{{subject.name}}</a>
+            </td>
+            <td>{{subject.semester}}</td>
+            <td>{{subject.type}}</td>
+            <td>{{subject.code}}</td>
+            <td>{{subject.ESPB}}</td>
+        </tr>
+    </tbody>
+</table>

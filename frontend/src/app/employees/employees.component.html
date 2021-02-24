@@ -1,1 +1,25 @@
-<p>employees works!</p>
+<div class="tabela">
+    <div class="head">
+        <div class="kolona">Име и презиме</div>
+        <div class="kolona">Звање</div>
+        <div class="kolona">Предмети</div>
+    </div>
+    <div *ngFor="let employee of employees">
+        <div style="overflow: auto;">
+            <div class="kolona">
+                <a routerLink="../employee" (click)="saveEmployee(employee)">{{employee.name}} {{employee.surname}}</a>
+            </div>
+            <div class="kolona">{{employee.title}}</div>
+            <div class="kolona">
+                <a role="button" data-toggle="collapse" href="{{'#subjects'+employee.username}}" aria-expanded="false" aria-controls="{{'subjects'+employee.username}}">Прошири</a>
+            </div>
+        </div>
+        <div class="collapse" id="{{'subjects'+employee.username}}">
+            <div class="card card-body">
+                <div *ngFor="let subject of employee.subjects">
+                    <a routerLink="../subject" (click)='saveSubject(subject)'>{{subject.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

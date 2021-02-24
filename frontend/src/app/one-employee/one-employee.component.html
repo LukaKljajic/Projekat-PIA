@@ -1,0 +1,50 @@
+<table>
+    <tr>
+        <td>Име:</td>
+        <td>{{employee.name}}</td>
+    </tr>
+    <tr>
+        <td>Презиме</td>
+        <td>{{employee.surname}}</td>
+    </tr>
+    <tr>
+        <td>Адреса</td>
+        <td>{{employee.address}}</td>
+    </tr>
+    <tr>
+        <td>Телефон</td>
+        <td>
+            <a href="{{'tel:'+employee.phone}}">{{employee.phone}}</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Веб сајт</td>
+        <td>
+            <a href="{{employee.website}}">{{employee.website}}</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Биографија</td>
+        <td>{{employee.biography}}</td>
+    </tr>
+    <tr>
+        <td>Звање</td>
+        <td>{{employee.title}}</td>
+    </tr>
+    <tr>
+        <td>Број кабинета</td>
+        <td>{{employee.cabinetNumber}}</td>
+    </tr>
+    <tr>
+        <td>Статус</td>
+        <td>{{status}}</td>
+    </tr>
+    <tr>
+        <td>Предмети</td>
+        <td>
+            <p *ngFor='let subject of employee.subjects'>
+                <a routerLink="../subject" (click)='saveSubject(subject)'>{{subject.name}}</a>
+            </p>
+        </td>
+    </tr>
+</table>

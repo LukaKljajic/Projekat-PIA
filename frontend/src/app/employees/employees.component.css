@@ -1,0 +1,35 @@
+.tabela{
+    background-color: rgba(61, 12, 12, 0.541);
+    color: antiquewhite;
+    width: 100%;
+    margin: auto;
+    margin-top: 2%;
+    overflow: auto;
+}
+
+.tabela .head{
+    background-color:  rgba(61, 12, 12);
+    padding-bottom: 1%;
+    overflow: auto;
+    font-weight: bold;
+}
+
+.tabela .kolona{
+    width: 33.3%;
+    float: left;
+    border-top: 1px solid antiquewhite;
+}
+
+.tabela a{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.tabela a:hover{
+    text-decoration: underline;
+    color: antiquewhite;
+}
+
+.card{
+    background-color: rgba(0, 0, 0, 0.5);
+}

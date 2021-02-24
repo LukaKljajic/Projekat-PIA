@@ -1,0 +1,14 @@
+<table class="table">
+    <thead>
+        <th>Категорија</th>
+        <th>Садржај</th>
+        <th>Датум</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let oneNews of news">
+            <td>{{oneNews.categoryName}}</td>
+            <td>{{oneNews.content}}</td>
+            <td>{{formatDate(oneNews.date)}}</td>
+        </tr>
+    </tbody>
+</table>

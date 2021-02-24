@@ -1,16 +1,25 @@
 import mongoose from 'mongoose'
 
 const Subject = new mongoose.Schema({
+  name: {
+    type: String
+  },
   department: {
     type: String
   },
   news: {
     type: Array
   },
-  year: {
+  semester: {
     type: Number
   },
   type: {
+    type: String
+  },
+  code: {
+    type: String
+  },
+  goal: {
     type: String
   },
   numOfClasses: {
