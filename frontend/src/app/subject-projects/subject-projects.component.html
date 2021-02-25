@@ -1,0 +1,10 @@
+<div id="lab">
+    <h4>Како се брани пројекат</h4>
+    <p>{{subject.project.how}}</p>
+    <h4>Материјали</h4>
+    <div *ngFor="let material of subject.project.materials" class="row">
+        <div class="col">
+            <a href="{{'../../assets/files/'+material}}">{{material}}</a>
+        </div>
+    </div>
+</div>

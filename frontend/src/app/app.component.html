@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <nav class="navbar navbar-expand-xl navbar-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,34 +32,58 @@
                     <div class="btn-group">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="second">Наука</a>
                         <div class="dropdown-menu" aria-labelledby="second">
-                            <a routerLink="explore" class="dropdown-item">Истраживања</a>
-                            <a routerLink="" class="dropdown-item">Пројекти</a>
+                            <a routerLink="explore" class="dropdown-item" routerLinkActive="active">Истраживања</a>
+                            <a routerLink="projects" class="dropdown-item" routerLinkActive="active">Пројекти</a>
                         </div>
                     </div>
-                    <a routerLink="" class="nav-link">Контакт</a>
-                    <div class="btn-group">
+                    <a routerLink="contact" class="nav-link" routerLinkActive="active">Контакт</a>
+                    <div class="btn-group" *ngIf="!logged; else elseBlock">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="third">Пријава</a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="third">
                             <form class="px-4 py-3">
                                 <div class="form-group">
                                     <label for="username">Корисничко име:</label>
-                                    <input type="text" id="username" class="form-control">
+                                    <input type="text" id="username" class="form-control" [(ngModel)]="username" name="username">
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Лозинка:</label>
-                                    <input type="password" id="password" class="form-control">
+                                    <input type="password" id="password" class="form-control" [(ngModel)]="password" name="password">
                                 </div>
-                                <button class="btn btn-primary">Пријави се</button>
+                                <button class="btn btn-primary" (click)="login()">Пријави се</button>
                             </form>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" routerLink="">Нови корисник? Региструј се.</a>
+                            <a class="dropdown-item" routerLink="registerStudent">Нови корисник? Региструј се.</a>
                         </div>
                     </div>
+                    <ng-template #elseBlock>
+                        <a class="nav-link" role="button" (click)="logout()">Одјава</a>
+                    </ng-template>
                 </div>  
             </nav>
         </div>
     </div>
-    <div class="row" id="content">
+    <div class="row" *ngIf="logged">
+        <div class="col">
+            <nav class="navbar navbar-expand-lg navbar-dark" id="secondary">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#secondary" aria-controls="secondary" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="secondary">
+                    <a routerLink="passwordChange" routerLinkActive="active" class="nav-link">Промена лозинке</a>
+                    <div *ngIf="userType == 'admin'">
+
+                    </div>
+                    <div *ngIf="userType == 'employee'">
+
+                    </div>
+                    <div *ngIf="userType == 'student'">
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="row content" [class.smanji]='logged'>
         <div class="col">
             <router-outlet></router-outlet>
         </div>

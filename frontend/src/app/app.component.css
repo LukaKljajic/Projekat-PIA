@@ -33,8 +33,12 @@
     height: 100%;
 }
 
-#content{
+.content{
     min-height: 78vh;
+}
+
+.smanji{
+    min-height: 72vh;
 }
 
 #header{
@@ -61,6 +65,14 @@
 
 .container-fluid{
     width: 90%;
+    padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .container-fluid{
+      width: 100%;
+    }
 }
 
 #footer{
@@ -68,4 +80,11 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     font-size: smaller;
+}
+
+#secondary{
+    min-height: 6vh;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 }

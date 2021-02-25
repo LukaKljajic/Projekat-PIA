@@ -1,0 +1,14 @@
+<div class="row" *ngFor='let news of subject.news' [class.new]='isNew(news.date)'>
+    <div class="col">
+        <div style="float: left;">Наслов: {{news.title}}</div>
+        <div style="float: right;">Датум: {{news.date}}</div>
+        <br>
+        <p style="margin-top: 5px;">{{news.content}}</p>
+        <div>
+            Прилози: 
+            <span *ngFor="let file of news.files">
+                <a href="{{'../../assets/files/'+file}}">{{file}}</a>
+            </span>
+        </div>
+    </div>
+</div>

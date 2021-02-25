@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+        <th>Запослени</th>
+        <th>Тема</th>
+        <th>Тип</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of projects">
+            <td>
+                <p *ngFor="let employee of project.employeeObjects">
+                    <a routerLink="../employee" (click)="saveEmployee(employee)">{{employee.name}} {{employee.surname}}</a>
+                </p>
+            </td>
+            <td>{{project.theme}}</td>
+            <td>{{project.type}}</td>
+        </tr>
+    </tbody>
+</table>

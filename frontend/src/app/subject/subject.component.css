@@ -1,0 +1,32 @@
+#navigation{
+    text-align: left;
+    padding: 0;
+    background-color:  rgba(90, 47, 47, 0.63);
+    height: 100%;
+}
+
+
+#navigation a{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+#navigation a.active{
+    color: rgb(172, 152, 126);
+}
+
+#navigation a:hover{
+    text-decoration: underline;
+    color: rgb(172, 152, 126);
+}
+
+.row{
+    width: 100%;
+    margin: 0;
+    height: 100%;
+}
+
+h1{
+    background-color: rgba(250, 235, 215, 0.5);
+    color: rgb(90, 47, 47);
+}

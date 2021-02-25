@@ -19,4 +19,15 @@ export class EmployeeService {
     }
     return this.http.post(`${this.uri}/getSubjectsForEmployee`, data)
   }
+
+  getAllProjects() {
+    return this.http.get(`${this.uri}/getAllProjects`)
+  }
+
+  getEmployeeByUsername(username: string) {
+    const data = {
+      username: username
+    }
+    return this.http.post(`${this.uri}/getEmployeeByUsername`, data)
+  }
 }

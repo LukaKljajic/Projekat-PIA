@@ -1,0 +1,14 @@
+.row{
+    background-color: rgba(0,0,0,0.5);
+    color: antiquewhite;
+}
+
+.row a{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.row a:hover{
+    text-decoration: underline;
+    color: antiquewhite;
+}

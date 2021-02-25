@@ -1,0 +1,25 @@
+.row{
+    background-color: rgba(0,0,0,0.5);
+    color: antiquewhite;
+    border-bottom: 1px dotted antiquewhite;
+}
+
+.new{
+    background-color: rgba(0,0,0,0.8);
+}
+
+.col div{
+    font-style: italic;
+}
+
+a{
+    text-decoration: none;
+    color: antiquewhite;
+    font-style: normal;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: antiquewhite;
+    font-style: italic;
+}

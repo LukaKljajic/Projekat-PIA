@@ -1,0 +1,20 @@
+a {
+    overflow: auto;
+    vertical-align: middle;
+}
+
+a img{
+    overflow: auto;
+    height: 50px;
+    width: 100%;
+}
+
+a img:hover{
+    border: 2px dotted black;
+}
+
+.row{
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+}

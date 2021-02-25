@@ -61,6 +61,15 @@ const Subject = new mongoose.Schema({
   project: {
     type: Object
   },
+  oldTestsEnabled: {
+    type: Boolean
+  },
+  labsEnabled: {
+    type: Boolean
+  },
+  projectEnabled: {
+    type: Boolean
+  },
   students: {
     type: Array
   }

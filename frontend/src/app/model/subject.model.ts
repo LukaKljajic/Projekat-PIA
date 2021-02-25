@@ -1,4 +1,5 @@
 import { Time } from "@angular/common"
+import { Employee } from "./employee.model"
 
 class News{
   title: string
@@ -10,7 +11,7 @@ class News{
 class Period{
   day: number
   starttime: Time
-  duration: Time
+  endtime: Time
 }
 
 class Labs{
@@ -39,6 +40,8 @@ export class Subject{
   practicalPeriods: Array<Period>
   theoryTeachers: Array<string>
   practicalTeachers: Array<string>
+  theoryTeacherObjects: Array<Employee>
+  practicalTeacherObjects: Array<Employee>
   haveLabs: boolean
   propositions: string
   theoryMaterials: Array<string>
@@ -46,5 +49,8 @@ export class Subject{
   oldTests: Array<string>
   labs: Labs
   project: Project
+  oldTestsEnabled: boolean
+  labsEnabled: boolean
+  projectEnabled: boolean
   students: Array<string>
 }

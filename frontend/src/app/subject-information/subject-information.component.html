@@ -1,0 +1,70 @@
+<table class="table">
+    <tr>
+        <td>Тип</td>
+        <td>{{subject.type}}</td>
+    </tr>
+    <tr>
+        <td>Семестар</td>
+        <td>{{subject.semester}}</td>
+    </tr>
+    <tr>
+        <td>Одсек</td>
+        <td>{{departmentNames[subject.department]}}</td>
+    </tr>
+    <tr>
+        <td>Шифра предмета</td>
+        <td>{{subject.code}}</td>
+    </tr>
+    <tr>
+        <td>Фонд часова</td>
+        <td>{{subject.numOfClasses}}</td>
+    </tr>
+    <tr>
+        <td>ЕСПБ</td>
+        <td>{{subject.ESPB}}</td>
+    </tr>
+    <tr>
+        <td>Циљ и исход предмета</td>
+        <td>{{subject.goal}}</td>
+    </tr>
+    <tr>
+        <td>Термини предавања</td>
+        <td>
+            <div *ngFor="let period of subject.theoryPeriods">
+                {{dayNames[period.day]}} {{period.starttime}}-{{period.endtime}}
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Термини вежби</td>
+        <td>
+            <div *ngFor="let period of subject.practicalPeriods">
+                {{dayNames[period.day]}} {{period.starttime}}-{{period.endtime}}
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Наставници за предавања</td>
+        <td>
+            <div *ngFor="let teacher of subject.theoryTeacherObjects">
+                <a role="button" (click)='goToEmployee(teacher)'>{{teacher.name}} {{teacher.surname}}</a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Наставници за вежбе</td>
+        <td>
+            <div *ngFor="let teacher of subject.practicalTeacherObjects">
+                <a role="button" (click)='goToEmployee(teacher)'>{{teacher.name}} {{teacher.surname}}</a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Да ли постоје лабови</td>
+        <td>{{doLabsExist(subject.haveLabs)}}</td>
+    </tr>
+    <tr>
+        <td>Пропозиције</td>
+        <td>{{subject.propositions}}</td>
+    </tr>
+</table>

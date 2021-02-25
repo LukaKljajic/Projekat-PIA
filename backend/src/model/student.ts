@@ -21,6 +21,9 @@ const Student = new mongoose.Schema({
   },
   active: {
     type: Boolean
+  },
+  passwordChanged: {
+    type: Boolean
   }
 })
 

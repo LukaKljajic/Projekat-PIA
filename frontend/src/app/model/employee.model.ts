@@ -14,4 +14,5 @@ export class Employee{
   active: boolean
   picture: string
   subjects: Array<Subject>
+  passwordChanged: boolean
 }

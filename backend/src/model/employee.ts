@@ -39,6 +39,9 @@ const Employee = new mongoose.Schema({
   },
   subjects: {
     type: Array
+  },
+  passwordChanged: {
+    type: Boolean
   }
 })
 

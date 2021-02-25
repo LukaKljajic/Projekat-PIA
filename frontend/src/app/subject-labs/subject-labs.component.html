@@ -1,0 +1,14 @@
+<div id="lab">
+    <h4>Како се раде вежбе</h4>
+    <p>{{subject.labs.how}}</p>
+    <h4>Колико има вежби</h4>
+    <p>{{subject.labs.howMany}}</p>
+    <h4>Шта се ради на вежбама</h4>
+    <p>{{subject.labs.what}}</p>
+    <h4>Материјали</h4>
+    <div *ngFor="let material of subject.labs.materials" class="row">
+        <div class="col">
+            <a href="{{'../../assets/files/'+material}}">{{material}}</a>
+        </div>
+    </div>
+</div>

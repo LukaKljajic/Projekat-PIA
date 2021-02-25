@@ -6,6 +6,9 @@ const Admin = new mongoose.Schema({
   },
   password: {
     type: String
+  },
+  passwordChanged: {
+    type: Boolean
   }
 })
 

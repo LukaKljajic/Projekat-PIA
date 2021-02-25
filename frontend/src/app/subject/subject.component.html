@@ -1,1 +1,17 @@
-<p>subject works!</p>
+<div class="row">
+    <div class="col-12 col-md-2" id="navigation">
+        <nav class="nav flex-sm-column flex-column">
+            <a class="nav-link" [routerLink]="['/subject', { outlets: {'subject':['subjectNews']}}]" routerLinkActive="active">Обавештења о предмету</a>
+            <a class="nav-link" [routerLink]="['/subject', { outlets: {'subject':['subjectInformation']}}]" routerLinkActive="active">Информације о предмету</a>
+            <a class="nav-link" [routerLink]="['/subject', { outlets: {'subject':['subjectTheoryMaterials']}}]" routerLinkActive="active">Предавања</a>
+            <a class="nav-link" [routerLink]="['/subject', { outlets: {'subject':['subjectPracticalMaterials']}}]" routerLinkActive="active">Вежбе</a>
+            <a *ngIf="subject.oldTestsEnabled" class="nav-link" [routerLink]="['/subject', { outlets: {'subject':['subjectOldTests']}}]" routerLinkActive="active">Испитна питања</a>
+            <a *ngIf="subject.labsEnabled" class="nav-link" [routerLink]="['/subject', { outlets: {'subject':['subjectLabs']}}]" routerLinkActive="active">Лабораторија</a>
+            <a *ngIf="subject.projectEnabled" class="nav-link" [routerLink]="['/subject', { outlets: {'subject':['subjectProjects']}}]" routerLinkActive="active">Пројекат</a>
+        </nav>
+    </div>
+    <div class="col-12 col-md-10" id="content">
+        <h1>{{subject.name}}</h1>
+        <router-outlet name="subject"></router-outlet>
+    </div>
+</div>

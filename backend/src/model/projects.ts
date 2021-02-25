@@ -6,6 +6,9 @@ const Projects = new mongoose.Schema({
   },
   theme: {
     type: String
+  },
+  type: {
+    type: String
   }
 })
 

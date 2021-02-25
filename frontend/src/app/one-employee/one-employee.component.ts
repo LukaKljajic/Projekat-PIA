@@ -14,6 +14,9 @@ export class OneEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.employee = JSON.parse(localStorage.getItem('employee'))
+    this.service.getSubjectsForEmployee(this.employee.username).subscribe((subjects: Subject[]) => {
+      this.employee.subjects = subjects
+    })
     if (this.employee.active)
       this.status = 'активан'
     else

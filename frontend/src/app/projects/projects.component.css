@@ -1,0 +1,19 @@
+table{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: antiquewhite;
+    margin: auto;
+}
+
+table tr{
+    border-top: 1px solid white;
+}
+
+table a{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+table a:hover{
+    text-decoration: underline;
+    color: antiquewhite;
+}
