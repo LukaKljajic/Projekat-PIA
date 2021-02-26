@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SubjectComponent } from './subject/subject.component';
 import { OneEmployeeComponent } from './one-employee/one-employee.component';
 import { NewsComponent } from './news/news.component';
@@ -24,6 +24,16 @@ import { SubjectPracticalMaterialsComponent } from './subject-practical-material
 import { SubjectOldTestComponent } from './subject-old-test/subject-old-test.component';
 import { SubjectLabsComponent } from './subject-labs/subject-labs.component';
 import { SubjectProjectsComponent } from './subject-projects/subject-projects.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EmployeeSubjectsComponent } from './employee-subjects/employee-subjects.component';
+import { EmployeeSubjectNewsComponent } from './employee-subject-news/employee-subject-news.component';
+import { ListsComponent } from './lists/lists.component';
+import { EmployeeSubjectsAboutComponent } from './employee-subjects-about/employee-subjects-about.component';
+import { EmployeeSubjectsTheoryComponent } from './employee-subjects-theory/employee-subjects-theory.component';
+import { EmployeeSubjectsPracticalComponent } from './employee-subjects-practical/employee-subjects-practical.component';
+import { EmployeeSubjectsOldTestsComponent } from './employee-subjects-old-tests/employee-subjects-old-tests.component';
+import { EmployeeSubjectsLabsComponent } from './employee-subjects-labs/employee-subjects-labs.component';
+import { EmployeeSubjectsProjectsComponent } from './employee-subjects-projects/employee-subjects-projects.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +56,24 @@ import { SubjectProjectsComponent } from './subject-projects/subject-projects.co
     SubjectPracticalMaterialsComponent,
     SubjectOldTestComponent,
     SubjectLabsComponent,
-    SubjectProjectsComponent
+    SubjectProjectsComponent,
+    ProfileComponent,
+    EmployeeSubjectsComponent,
+    EmployeeSubjectNewsComponent,
+    ListsComponent,
+    EmployeeSubjectsAboutComponent,
+    EmployeeSubjectsTheoryComponent,
+    EmployeeSubjectsPracticalComponent,
+    EmployeeSubjectsOldTestsComponent,
+    EmployeeSubjectsLabsComponent,
+    EmployeeSubjectsProjectsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

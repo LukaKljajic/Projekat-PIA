@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,49 @@ export class EmployeeService {
       username: username
     }
     return this.http.post(`${this.uri}/getEmployeeByUsername`, data)
+  }
+
+  changeSubject(code, type, ESPB, propositions, goal) {
+    const data = {
+      code: code,
+      type: type,
+      ESPB: ESPB,
+      propositions: propositions,
+      goal: goal
+    }
+    return this.http.post(`${this.uri}/changeSubject`, data)
+  }
+
+  setFiles(code, files, nameOfArray) {
+    const data = {
+      code: code,
+      files: files,
+      nameOfArray: nameOfArray
+    }
+    return this.http.post(`${this.uri}/setFiles`, data)
+  }
+
+  postFile(fileToUpload: File, author: string, code: string, name: string) {
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('author', author)
+    formData.append('code', code)
+    formData.append('name', name)
+    return this.http.post(`${this.uri}/postFile`, formData)
+  }
+
+  deleteFile(fileToDelete: string) {
+    console.log(fileToDelete)
+    const data = {fileToDelete: fileToDelete}
+    return this.http.post(`${this.uri}/deleteFile`, data)
+  }
+
+  enable(what: string, code: string, value: boolean) {
+    const data = {
+      what: what,
+      code: code,
+      value: value
+    }
+    return this.http.post(`${this.uri}/enable`, data)
   }
 }

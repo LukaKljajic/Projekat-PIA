@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     AppComponent.app = this
     this.logged = localStorage.getItem('user') != null
+    this.userType = localStorage.getItem('userType')
   }
 
   title = 'app';
@@ -58,6 +59,7 @@ export class AppComponent implements OnInit{
             this.router.navigate(['passwordChange'])
         }
         this.logged = true
+        localStorage.setItem('userType', this.userType)
       }
       else {
         alert('Лоши подаци')
@@ -68,10 +70,10 @@ export class AppComponent implements OnInit{
   logout(): void {
     this.userType = ''
     localStorage.removeItem('user')
+    localStorage.removeItem('userType')
     this.logged = false
     this.username = ''
     this.password = ''
-    if (this.router.url.startsWith('/subject') && !this.router.url.startsWith('/subjects'))
-      this.router.navigate(['mainPage'])
+    this.router.navigate(['mainPage'])
   }
 }

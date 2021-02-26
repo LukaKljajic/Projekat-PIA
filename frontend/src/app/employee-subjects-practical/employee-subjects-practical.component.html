@@ -1,0 +1,43 @@
+<form>
+    <div class="form-group">
+        <label for="subjects">Изабери предмет:</label>
+        <select name="subject" id="subjects" (change)="changed()" [(ngModel)]="subjectCode" class="form-control">
+            <option *ngFor="let subject of user.subjects" value="{{subject.code}}">{{subject.name}}</option>
+        </select>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <th>Фајл</th>
+        <th>Величина</th>
+        <th>Аутор</th>
+        <th>Помери горе</th>
+        <th>Помери доле</th>
+        <th>Брисање</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let file of subject.practicalMaterials">
+            <td>
+                <a href="{{'http://localhost:4000/files/'+file.file}}">{{file.file}}</a>
+            </td>
+            <td>{{file.size}}</td>
+            <td>{{file.authorObject.name}} {{file.authorObject.surname}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="up(file)">^</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="down(file)">v</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="delete(file)">Обриши</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<form>
+    <div class="form-group">
+        <label for="file">Фајл</label>
+        <input id="file" class="form-control-file" type="file" name="file" (change)='onFileChange($event.target.files)'>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)='uploadFile()'>Пошаљи фајл</button>
+</form>

@@ -10,7 +10,7 @@ export class Employee{
   website: string
   biography: string
   title: string
-  cabinetNumber: number
+  cabinetNumber: string
   active: boolean
   picture: string
   subjects: Array<Subject>

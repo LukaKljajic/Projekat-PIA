@@ -1,5 +1,7 @@
 import express from 'express';
-import cors from 'cors'
+import cors from 'cors';
+import multer from 'multer';
+import fs from 'fs';
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 import employee from './model/employee';
@@ -160,6 +162,78 @@ router.route('/changePassword').post((req, res) => {
   employee.collection.updateOne({ 'username': username }, { $set: { 'password': newPassword, 'passwordChanged': true } })
   admin.collection.updateOne({ 'username': username }, { $set: { 'password': newPassword, 'passwordChanged': true } })
   res.json(newPassword)
+})
+
+router.route('/changeProfile').post((req, res) => {
+  console.log(req.body)
+  let username = req.body.username
+  let address = req.body.address
+  let phone = req.body.phone
+  let biography = req.body.biography
+  let cabinetNumber = req.body.cabinetNumber
+  employee.collection.updateOne({ 'username': username }, { $set: { 'address': address, 'phone': phone, 'biography': biography, 'cabinetNumber': cabinetNumber } })
+  res.json({poruka: 'ok'})
+})
+
+router.route('/changeSubject').post((req, res) => {
+  console.log(req.body)
+  let code = req.body.code
+  let type = req.body.type
+  let ESPB = req.body.ESPB
+  let propositions = req.body.propositions
+  let goal = req.body.goal
+  subject.collection.updateOne({ 'code': code }, { $set: { 'type': type, 'ESPB': ESPB, 'propositions': propositions, 'goal': goal } })
+  res.json({poruka: 'ok'})
+})
+
+router.route('/setFiles').post((req, res) => {
+  let code = req.body.code
+  let files = req.body.files
+  let nameOfArray = req.body.nameOfArray
+  subject.collection.updateOne({ 'code': code }, { $set: { [nameOfArray]: files }})
+  res.json({poruka: 'ok'})
+})
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './public/files');
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+})
+var upload = multer({ storage: storage })
+
+router.post('/postFile', upload.single('file'), (req, res) => {
+  let fileUrl = req.file.filename;
+  const file = {
+    file: fileUrl,
+    size: req.file.size / 1024,
+    author: req.body.author
+  }
+  let code = req.body.code
+  let name = req.body.name
+  subject.collection.updateOne({ 'code': code }, { $push: { [name]: file } })
+  res.json(file)
+});
+
+router.get('/files/:path', (req, res, next) => {
+  res.download('public/files/' + req.params.path)
+})
+
+router.route('/deleteFile').post((req, res) => {
+  let fileToDelete = req.body.fileToDelete
+  console.log(fileToDelete)
+  fs.unlinkSync("./public/files/"+fileToDelete)
+})
+
+router.route('/enable').post((req, res) => {
+  let what = req.body.what
+  let code = req.body.code
+  let value = req.body.value
+
+  subject.collection.updateOne({ 'code': code }, { $set: { [what + 'Enabled']: value } })
+  res.json({poruka: 'ok'})
 })
 
 app.use('/', router)

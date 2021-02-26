@@ -18,12 +18,19 @@ class Labs{
   how: string
   howMany: number
   what: string
-  materials: Array<string>
+  materials: Array<MyFile>
 }
 
 class Project{
   how: string
-  materials: Array<string>
+  materials: Array<MyFile>
+}
+
+export class MyFile{
+  file: string
+  author: string
+  authorObject: Employee
+  size: number
 }
 
 export class Subject{
@@ -44,9 +51,9 @@ export class Subject{
   practicalTeacherObjects: Array<Employee>
   haveLabs: boolean
   propositions: string
-  theoryMaterials: Array<string>
-  practicalMaterials: Array<string>
-  oldTests: Array<string>
+  theoryMaterials: Array<MyFile>
+  practicalMaterials: Array<MyFile>
+  oldTests: Array<MyFile>
   labs: Labs
   project: Project
   oldTestsEnabled: boolean

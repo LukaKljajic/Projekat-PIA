@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-12 col-md-2" id="navigation">
+        <nav class="nav flex-sm-column flex-column">
+            <a class="nav-link" [routerLink]="['/employeeSubjects', { outlets: {'employee-subject':['employeeSubjectsAbout']}}]" routerLinkActive="active">О предмету</a>
+            <a class="nav-link" [routerLink]="['/employeeSubjects', { outlets: {'employee-subject':['employeeSubjectsTheory']}}]" routerLinkActive="active">Предавања</a>
+            <a class="nav-link" [routerLink]="['/employeeSubjects', { outlets: {'employee-subject':['employeeSubjectsPractical']}}]" routerLinkActive="active">Вежбе</a>
+            <a class="nav-link" [routerLink]="['/employeeSubjects', { outlets: {'employee-subject':['employeeSubjectsOldTests']}}]" routerLinkActive="active">Испитна питања</a>
+            <a class="nav-link" [routerLink]="['/employeeSubjects', { outlets: {'employee-subject':['employeeSubjectsLabs']}}]" routerLinkActive="active">Лабораторија</a>
+            <a class="nav-link" [routerLink]="['/employeeSubjects', { outlets: {'employee-subject':['employeeSubjectsProjects']}}]" routerLinkActive="active">Пројекат</a>
+        </nav>
+    </div>
+    <div class="col-12 col-md-10" id="content">
+        <router-outlet name="employee-subject"></router-outlet>
+    </div>
+</div>

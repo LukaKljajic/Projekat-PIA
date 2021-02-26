@@ -1,0 +1,17 @@
+form, table{
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    color: antiquewhite;
+}
+
+.form-group{
+    margin: 0;
+}
+
+.btn{
+    margin-top: 2%;
+}
+
+a{
+    color: antiquewhite;
+}

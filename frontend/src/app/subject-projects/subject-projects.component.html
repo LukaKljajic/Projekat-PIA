@@ -4,7 +4,7 @@
     <h4>Материјали</h4>
     <div *ngFor="let material of subject.project.materials" class="row">
         <div class="col">
-            <a href="{{'../../assets/files/'+material}}">{{material}}</a>
+            <a href="{{'http://localhost:4000/files/'+material.file}}">{{material.file}}</a>
         </div>
     </div>
 </div>

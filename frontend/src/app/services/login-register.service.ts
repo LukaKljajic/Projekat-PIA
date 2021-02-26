@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Employee } from '../model/employee.model';
 import { Transliterator } from '../util/transliterator';
 
 @Injectable({
@@ -45,5 +46,17 @@ export class LoginRegisterService {
       newPassword: newPassword
     }
     return this.http.post(`${this.uri}/changePassword`, data)
+  }
+
+  changeProfile(username, address, phone, biography, cabinetNumber) {
+    const data = {
+      username: username,
+      address: address,
+      phone: phone,
+      biography: biography,
+      cabinetNumber: cabinetNumber
+    }
+    console.log(data)
+    return this.http.post(`${this.uri}/changeProfile`, data)
   }
 }

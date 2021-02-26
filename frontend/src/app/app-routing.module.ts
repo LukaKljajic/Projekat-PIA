@@ -1,13 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
+import { EmployeeSubjectNewsComponent } from './employee-subject-news/employee-subject-news.component';
+import { EmployeeSubjectsAboutComponent } from './employee-subjects-about/employee-subjects-about.component';
+import { EmployeeSubjectsLabsComponent } from './employee-subjects-labs/employee-subjects-labs.component';
+import { EmployeeSubjectsOldTestsComponent } from './employee-subjects-old-tests/employee-subjects-old-tests.component';
+import { EmployeeSubjectsPracticalComponent } from './employee-subjects-practical/employee-subjects-practical.component';
+import { EmployeeSubjectsProjectsComponent } from './employee-subjects-projects/employee-subjects-projects.component';
+import { EmployeeSubjectsTheoryComponent } from './employee-subjects-theory/employee-subjects-theory.component';
+import { EmployeeSubjectsComponent } from './employee-subjects/employee-subjects.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { ExploreComponent } from './explore/explore.component';
 import { SubjectGuard } from './guards/subject.guard';
+import { ListsComponent } from './lists/lists.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { NewsComponent } from './news/news.component';
 import { OneEmployeeComponent } from './one-employee/one-employee.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
 import { StudentProjectsComponent } from './student-projects/student-projects.component';
@@ -44,7 +54,21 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'registerStudent', component: RegisterStudentComponent },
-  { path: 'passwordChange', component: PasswordChangeComponent},
+  { path: 'passwordChange', component: PasswordChangeComponent },
+  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'employeeSubjects', component: EmployeeSubjectsComponent,
+    children: [
+      { path: 'employeeSubjectsAbout', component: EmployeeSubjectsAboutComponent, outlet: 'employee-subject' },
+      { path: 'employeeSubjectsTheory', component: EmployeeSubjectsTheoryComponent, outlet: 'employee-subject' },
+      { path: 'employeeSubjectsPractical', component: EmployeeSubjectsPracticalComponent, outlet: 'employee-subject' },
+      { path: 'employeeSubjectsOldTests', component: EmployeeSubjectsOldTestsComponent, outlet: 'employee-subject' },
+      { path: 'employeeSubjectsLabs', component: EmployeeSubjectsLabsComponent, outlet: 'employee-subject' },
+      { path: 'employeeSubjectsProjects', component: EmployeeSubjectsProjectsComponent, outlet: 'employee-subject' }
+    ]
+  },
+  { path: 'employeeSubjectNews', component: EmployeeSubjectNewsComponent },
+  { path: 'lists', component: ListsComponent },
   { path: '**', redirectTo: 'mainPage', pathMatch: 'full' }
 ];
 
