@@ -1,0 +1,15 @@
+<form>
+    <div class="form-group">
+        <label for="subject">Предмети</label>
+        <select id="subject" class="form-control" name="subject" [(ngModel)]="selectedSubjectCode" (change)='changedSubject()'>
+            <option *ngFor="let subject of allSubjects" value="{{subject.code}}">{{subject.name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="students">Студенти</label>
+        <select id="students" class="form-control" name="students" multiple [(ngModel)]="selectedSubject.students">
+            <option *ngFor="let student of allStudents" value="{{student.username}}">{{student.name}} {{student.surname}}</option>
+        </select>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="dodaj()">Запамти студенте</button>
+</form>

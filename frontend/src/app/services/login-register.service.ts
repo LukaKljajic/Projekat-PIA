@@ -31,6 +31,46 @@ export class LoginRegisterService {
     return this.http.post(`${this.uri}/insertStudent`, data)
   }
 
+  upsertStudent(index: string, name: string, surname: string, password: string, type: string) {    
+    let index_copy = index
+    index_copy = index_copy.substring(2)
+    let username = Transliterator.transliterate(surname.charAt(0).toLocaleLowerCase()) + Transliterator.transliterate(name.charAt(0).toLocaleLowerCase()) + index_copy.replace('/', '') + type
+
+    const data = {
+      username: username,
+      password: password,
+      index: index,
+      type: type,
+      name: name,
+      surname: surname
+    }
+
+    return this.http.post(`${this.uri}/upsertStudent`, data)
+  }
+
+  getStudentByIndex(index) {
+    const data = {
+      index: index
+    }
+    return this.http.post(`${this.uri}/getStudentByIndex`, data)
+  }
+
+  upsertEmployee(username, name, surname, password, address, phone, website, biography, title, cabinetNumber) {
+    const data = {
+      username: username,
+      name: name,
+      surname: surname,
+      password: password,
+      address: address,
+      phone: phone,
+      website: website,
+      biography: biography,
+      title: title,
+      cabinetNumber: cabinetNumber
+    }
+    return this.http.post(`${this.uri}/upsertEmployee`, data)
+  }
+
   login(username: string, password: string) {
     const data = {
       username: username,
@@ -58,5 +98,19 @@ export class LoginRegisterService {
     }
     console.log(data)
     return this.http.post(`${this.uri}/changeProfile`, data)
+  }
+
+  deleteStudent(index) {
+    const data = {
+      index: index
+    }
+    return this.http.post(`${this.uri}/deleteStudent`, data)
+  }
+
+  deleteEmployee(username) {
+    const data = {
+      username: username
+    }
+    return this.http.post(`${this.uri}/deleteEmployee`, data)
   }
 }

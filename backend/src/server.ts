@@ -217,6 +217,41 @@ router.post('/postFile', upload.single('file'), (req, res) => {
   res.json(file)
 });
 
+router.post('/postNews', upload.single('file'), (req, res) => {
+  let fileUrl = null
+  if(req.file)
+    fileUrl = req.file.filename
+  let code = req.body.code
+  let title = req.body.title
+  let content = req.body.content
+  let username = req.body.username
+  let _new = {
+    author: username,
+    title: title,
+    content: content,
+    date: new Date().toISOString(),
+    files: [fileUrl]
+  }
+  if (!fileUrl)
+    _new.files = []
+  subject.collection.updateOne({ 'code': code }, { $push: { 'news': _new } })
+  res.json(_new)
+})
+
+router.post('/changeNews', upload.single('file'), (req, res) => {
+  let fileUrl = null
+  if (req.file)
+    fileUrl = req.file.filename
+  let code = req.body.code
+  let title = req.body.title
+  let content = req.body.content
+  if(fileUrl)
+    subject.collection.updateOne({ 'code': code, 'news.title': title }, { $set: { 'news.$.content': content }, $push: { 'news.$.files': fileUrl } })
+  else
+    subject.collection.updateOne({ 'code': code, 'news.title': title }, { $set: { 'news.$.content': content }})
+  res.json({poruka:"ok"})
+})
+
 router.get('/files/:path', (req, res, next) => {
   res.download('public/files/' + req.params.path)
 })
@@ -234,6 +269,179 @@ router.route('/enable').post((req, res) => {
 
   subject.collection.updateOne({ 'code': code }, { $set: { [what + 'Enabled']: value } })
   res.json({poruka: 'ok'})
+})
+
+router.route('/changeLabs').post((req, res) => {
+  let code = req.body.code
+  let how = req.body.how
+  let howMany = req.body.howMany
+  let what = req.body.what
+  subject.collection.updateOne({ 'code': code }, { $set: { 'labs.how': how, 'labs.howMany': howMany, 'labs.what': what } })
+  res.json({poruka:'ok'})
+})
+
+router.route('/changeProject').post((req, res) => {
+  let code = req.body.code
+  let how = req.body.how
+  subject.collection.updateOne({ 'code': code }, { $set: { 'project.how': how } })
+  res.json({poruka:'ok'})
+})
+
+router.route('/setNews').post((req, res) => {
+  let code = req.body.code
+  let news = req.body.news
+  subject.collection.updateOne({ 'code': code }, { $set: { 'news': news } })
+  res.json({poruka:'ok'})
+})
+
+router.route('/upsertEmployee').post((req, res) => {
+  console.log('usao u upsert')
+  console.log(req.body)
+  let username = req.body.username
+  let name = req.body.name
+  let surname = req.body.surname
+  let password = req.body.password
+  let address = req.body.address
+  let phone = req.body.phone
+  let website = req.body.website
+  let biography = req.body.biography
+  let title = req.body.title
+  let cabinetNumber = req.body.cabinetNumber
+
+  employee.collection.updateOne(
+    { 'username': username },
+    {
+      $set: {
+        'username':username,
+        'password': password,
+        'name': name,
+        'surname': surname,
+        "address": address,
+        'phone': phone,
+        'website': website,
+        'biography': biography,
+        'title': title,
+        'cabinetNumber': cabinetNumber,
+        'active': true,
+        'passwordChanged': false
+      }
+    },
+    {
+      upsert: true
+    }
+  )
+  res.json({poruka:'ok'})
+})
+
+router.route('/upsertStudent').post((req, res) => {
+  let username = req.body.username
+  let password = req.body.password
+  let index = req.body.index
+  let type = req.body.type
+  let name = req.body.name
+  let surname = req.body.surname
+
+  student.collection.updateOne(
+    { 'username': username },
+    {
+      $set: {
+        'username': username,
+        'password': password,
+        'index': index,
+        'type': type,
+        'name': name,
+        'surname': surname,
+        'active': true,
+        'passwordChanged': false
+      }
+    },
+    {
+      upsert: true
+    }
+  )
+  res.json({poruka: 'ok'})
+})
+
+router.route('/upsertSubject').post((req, res) => {
+  subject.collection.updateOne(
+    { 'code': req.body.code },
+    {
+      $set:
+      {
+        'name': req.body.name,
+        'department': req.body.department,
+        'semester': req.body.semester,
+        'code': req.body.code,
+        'theoryTeachers': req.body.theoryTeachers,
+        'practicalTeachers': req.body.practicalTeachers,
+        'haveLabs': req.body.haveLabs
+      }
+    },
+    {
+      upsert: true
+    }
+  )
+  res.json({poruka: 'ok'})
+})
+
+router.route('/getStudentByIndex').post((req, res) => {
+  let index = req.body.index
+  student.findOne({ 'index': index }, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/deleteStudent').post((req, res) => {
+  let index = req.body.index
+  student.collection.deleteOne({ 'index': index })
+  res.json({poruka: 'ok'})
+})
+
+router.route('/deleteEmployee').post((req, res) => {
+  let username = req.body.username
+  employee.collection.deleteOne({ 'username': username })
+  res.json({poruka: 'ok'})
+})
+
+router.route('/getAllSubjects').get((req, res) => {
+  subject.find({}, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/getAllStudents').get((req, res) => {
+  student.find({}, (err, data) => {
+    if (err) console.log(err)
+    else res.json(data)
+  })
+})
+
+router.route('/savePeriod').post((req, res) => {
+  console.log('usao')
+  let code = req.body.code
+  let periods = req.body.periods
+  let numOfClasses = req.body.numOfClasses
+  let type = req.body.type
+
+  subject.collection.updateOne(
+    { 'code': code },
+    {
+      $set: {
+        [type + 'Periods']: periods,
+        'numOfClasses':numOfClasses
+      }
+    }
+  )
+  res.json({poruka: 'ok'})
+})
+
+router.route('/setStudents').post((req, res) => {
+  let code = req.body.code
+  let students = req.body.students
+  subject.collection.updateOne({ 'code': code }, { $set: { 'students': students } })
+  res.json({poruka:'ok'})
 })
 
 app.use('/', router)

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../model/employee.model';
-import { MyFile, Subject } from '../model/subject.model';
+import { Labs, MyFile, Subject } from '../model/subject.model';
 import { EmployeeService } from '../services/employee.service';
 
 @Component({
@@ -15,6 +15,8 @@ export class EmployeeSubjectsLabsComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'))
     this.subject = this.user.subjects[0]
+    if (this.subject.labs == undefined)
+      this.subject.labs = new Labs
     this.subjectCode = this.subject.code
   }
 
@@ -24,6 +26,8 @@ export class EmployeeSubjectsLabsComponent implements OnInit {
 
   changed() {
     this.subject = this.user.subjects.find(el => el.code == this.subjectCode)
+    if (this.subject.labs == undefined)
+      this.subject.labs = new Labs
   }
 
   up(file: MyFile) {
@@ -108,6 +112,13 @@ export class EmployeeSubjectsLabsComponent implements OnInit {
       if (resp['poruka'] === 'ok') {
         localStorage.setItem('user', JSON.stringify(this.user))
       }
+    })
+  }
+
+  saveChanges() {
+    this.service.changeLabs(this.subject.code, this.subject.labs.how, this.subject.labs.howMany, this.subject.labs.what).subscribe((resp) => {
+      if(resp['poruka'] === 'ok')
+        localStorage.setItem('user', JSON.stringify(this.user))
     })
   }
 

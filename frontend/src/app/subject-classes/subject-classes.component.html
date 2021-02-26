@@ -1,0 +1,58 @@
+<form>
+    <div class="form-group">
+        <label for="subject">Предмети</label>
+        <select id="subject" class="form-control" name="subject" [(ngModel)]="selectedSubjectCode" (change)='changedSubject()'>
+            <option *ngFor="let subject of allSubjects" value="{{subject.code}}">{{subject.name}}</option>
+        </select>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <th>Дан</th>
+        <th>Почетак</th>
+        <th>Крај</th>
+        <th>Тип</th>
+    </thead>
+    <tbody>
+        <tr *ngFor='let periods of selectedSubject.theoryPeriods'>
+            <td>{{days[periods.day]}}</td>
+            <td>{{periods.starttime}}</td>
+            <td>{{periods.endtime}}</td>
+            <td>Предавања</td>
+        </tr>
+        <tr *ngFor='let periods of selectedSubject.practicalPeriods'>
+            <td>{{days[periods.day]}}</td>
+            <td>{{periods.starttime}}</td>
+            <td>{{periods.endtime}}</td>
+            <td>Вежбе</td>
+        </tr>
+    </tbody>
+</table>
+<form>
+    <div class="form-group">
+        <label for="day">Дан у недељи</label>
+        <select id="day" class="form-control" name="day" [(ngModel)]='day'>
+            <option value="1">Понедељак</option>
+            <option value="2">Уторак</option>
+            <option value="3">Среда</option>
+            <option value="4">Четвртак</option>
+            <option value="5">Петак</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="start">Почетак</label>
+        <input id="start" class="form-control" type="text" name="start" [(ngModel)]='start'>
+    </div>
+    <div class="form-group">
+        <label for="end">Крај</label>
+        <input id="end" class="form-control" type="text" name="end" [(ngModel)]='end'>
+    </div>
+    <div class="form-group">
+        <label for="type">Тип</label>
+        <select id="type" class="form-control" name="type" [(ngModel)]="type">
+            <option value="0">Предавања</option>
+            <option value="1">Вежбе</option>
+        </select>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="dodaj()">Додај термин</button>
+</form>

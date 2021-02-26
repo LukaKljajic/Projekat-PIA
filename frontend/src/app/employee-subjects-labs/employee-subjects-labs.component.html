@@ -44,5 +44,18 @@
         <br>
         <button type="button" class="btn btn-primary" *ngIf="subject.labsEnabled" (click)="changeEnabled()">Сакриј лабораторију студентима</button>
         <button type="button" class="btn btn-primary" *ngIf="!subject.labsEnabled" (click)="changeEnabled()">Прикажи лабораторију студентима</button>
+        <div class="form-group">
+            <label for="how">Како се раде вежбе</label>
+            <textarea id="how" class="form-control" name="how" rows="3" [(ngModel)]="subject.labs.how"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="howMany">Колико има вежби</label>
+            <input type="number" id="howMany" class="form-control" name="howMany" [(ngModel)]="subject.labs.howMany">
+        </div>
+        <div class="form-group">
+            <label for="what">Шта се ради на вежбама</label>
+            <textarea id="what" class="form-control" name="what" rows="3" [(ngModel)]="subject.labs.what"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="saveChanges()">Сачувај измене</button>
     </form>
 </div>

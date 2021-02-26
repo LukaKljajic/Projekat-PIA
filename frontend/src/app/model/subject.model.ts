@@ -1,29 +1,30 @@
 import { Time } from "@angular/common"
 import { Employee } from "./employee.model"
 
-class News{
+export class News{
+  author: string
   title: string
   content: string
   date: Date
   files: Array<string>
 }
 
-class Period{
+export class Period{
   day: number
   starttime: Time
   endtime: Time
 }
 
-class Labs{
+export class Labs{
   how: string
   howMany: number
   what: string
-  materials: Array<MyFile>
+  materials: Array<MyFile> = []
 }
 
-class Project{
+export class Project{
   how: string
-  materials: Array<MyFile>
+  materials: Array<MyFile> = []
 }
 
 export class MyFile{
@@ -36,28 +37,28 @@ export class MyFile{
 export class Subject{
   name: string
   department: string
-  news: Array<News>
+  news: Array<News> = []
   semester: number
   type: string
   code: string
   goal: string
   numOfClasses: number
   ESPB: number
-  theoryPeriods: Array<Period>
-  practicalPeriods: Array<Period>
-  theoryTeachers: Array<string>
-  practicalTeachers: Array<string>
-  theoryTeacherObjects: Array<Employee>
-  practicalTeacherObjects: Array<Employee>
+  theoryPeriods: Array<Period> = []
+  practicalPeriods: Array<Period> = []
+  theoryTeachers: Array<string> = []
+  practicalTeachers: Array<string> = []
+  theoryTeacherObjects: Array<Employee> = []
+  practicalTeacherObjects: Array<Employee> = []
   haveLabs: boolean
   propositions: string
-  theoryMaterials: Array<MyFile>
-  practicalMaterials: Array<MyFile>
-  oldTests: Array<MyFile>
-  labs: Labs
-  project: Project
+  theoryMaterials: Array<MyFile> = []
+  practicalMaterials: Array<MyFile> = []
+  oldTests: Array<MyFile> = []
+  labs: Labs = new Labs
+  project: Project = new Project
   oldTestsEnabled: boolean
   labsEnabled: boolean
   projectEnabled: boolean
-  students: Array<string>
+  students: Array<string> = []
 }

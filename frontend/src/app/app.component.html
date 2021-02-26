@@ -70,16 +70,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="secondary">
                     <a routerLink="passwordChange" routerLinkActive="active" class="nav-link">Промена лозинке</a>
-                    <div *ngIf="userType == 'admin'">
 
-                    </div>
+                    <a *ngIf="userType=='admin'" routerLink="changeStudent" routerLinkActive="active" class="nav-link">Студенти</a>
+                    <a *ngIf="userType=='admin'" routerLink="registerEmployee" routerLinkActive="active" class="nav-link">Зaпослени</a>
+                    <a *ngIf="userType=='admin'" routerLink="modifySubjects" routerLinkActive="active" class="nav-link">Предмети</a>
+                    <a *ngIf="userType=='admin'" routerLink="subjectClasses" routerLinkActive="active" class="nav-link">Додај часове</a>
+                    <a *ngIf="userType=='admin'" routerLink="subjectStudents" routerLinkActive="active" class="nav-link">Додај студенте</a>
+
                     <a *ngIf="userType=='employee'" routerLink="profile" routerLinkActive="active" class="nav-link">Профил</a>
                     <a *ngIf="userType=='employee'" routerLink="employeeSubjects" routerLinkActive="active" class="nav-link">Предмети</a>
-                    <a *ngIf="userType=='employee'" routerLink="employeeSubjectNews" routerLinkActive="active" class="nav-link">Обавештења о предметима</a>
-                    <a *ngIf="userType=='employee'" routerLink="lists" routerLinkActive="active" class="nav-link">Спискови</a>
-                    <div *ngIf="userType == 'student'">
-
+                    <div class="btn-group" *ngIf="userType=='employee'">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="second">Обавештења о предметима</a>
+                        <div class="dropdown-menu" aria-labelledby="second">
+                            <a routerLink="employeeSubjectNews" class="dropdown-item" routerLinkActive="active">Додавање</a>
+                            <a routerLink="employeeSubjectNewsUpdate" class="dropdown-item" routerLinkActive="active">Ажурирање</a>
+                        </div>
                     </div>
+                    <a *ngIf="userType=='employee'" routerLink="lists" routerLinkActive="active" class="nav-link">Спискови</a>
                 </div>
             </nav>
         </div>

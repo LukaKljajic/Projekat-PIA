@@ -34,6 +34,12 @@ import { EmployeeSubjectsPracticalComponent } from './employee-subjects-practica
 import { EmployeeSubjectsOldTestsComponent } from './employee-subjects-old-tests/employee-subjects-old-tests.component';
 import { EmployeeSubjectsLabsComponent } from './employee-subjects-labs/employee-subjects-labs.component';
 import { EmployeeSubjectsProjectsComponent } from './employee-subjects-projects/employee-subjects-projects.component';
+import { EmployeeSubjectNewsUpdateComponent } from './employee-subject-news-update/employee-subject-news-update.component';
+import { RegisterEmployeeComponent } from './register-employee/register-employee.component';
+import { ChangeStudentComponent } from './change-student/change-student.component';
+import { ModifySubjectsComponent } from './modify-subjects/modify-subjects.component';
+import { SubjectClassesComponent } from './subject-classes/subject-classes.component';
+import { SubjectStudentsComponent } from './subject-students/subject-students.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +72,13 @@ import { EmployeeSubjectsProjectsComponent } from './employee-subjects-projects/
     EmployeeSubjectsPracticalComponent,
     EmployeeSubjectsOldTestsComponent,
     EmployeeSubjectsLabsComponent,
-    EmployeeSubjectsProjectsComponent
+    EmployeeSubjectsProjectsComponent,
+    EmployeeSubjectNewsUpdateComponent,
+    RegisterEmployeeComponent,
+    ChangeStudentComponent,
+    ModifySubjectsComponent,
+    SubjectClassesComponent,
+    SubjectStudentsComponent
   ],
   imports: [
     BrowserModule,

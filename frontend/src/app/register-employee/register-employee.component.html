@@ -1,0 +1,53 @@
+<form>
+    <div class="form-group">
+        <label for="username">Корисничко име</label>
+        <input type="text" id="username" class="form-control" [(ngModel)]="username" name="username" (change)="usernameChanged()">
+    </div>
+    <div class="form-group">
+        <label for="password">Лозинка</label>
+        <input id="password" class="form-control" type="password" [(ngModel)]="password" name="password">
+    </div>
+    <div class="form-group">
+        <label for="name">Име</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name">
+    </div>
+    <div class="form-group">
+        <label for="surname">Презиме</label>
+        <input type="text" class="form-control" id="surname" [(ngModel)]="surname" name="surname">
+    </div>
+    <div class="form-group">
+        <label for="address">Адреса</label>
+        <input id="address" class="form-control" type="text" name="address" [(ngModel)]="address">
+    </div>
+    <div class="form-group">
+        <label for="phone">Телефон</label>
+        <input id="phone" class="form-control" type="text" name="phone" [(ngModel)]="phone">
+    </div>
+    <div class="form-group">
+        <label for="website">Веб сајт</label>
+        <input id="website" class="form-control" type="text" name="website" [(ngModel)]="website">
+    </div>
+    <div class="form-group">
+        <label for="biography">Биографија</label>
+        <textarea id="biography" class="form-control" name="biography" rows="3" [(ngModel)]="biography"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="title">Звање</label>
+        <select id="title" class="form-control" name="title">
+            <option>редовни професор</option>
+            <option>ванредни професор</option>
+            <option>доцент</option>
+            <option>асистент</option>
+            <option>сарадник у настави</option>
+            <option>истраживач</option>
+            <option>лабораторијски инжењер</option>
+            <option>лабораторијски техничар</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="cabinet">Број кабинета</label>
+        <input id="cabinet" class="form-control" type="text" name="cabinet" [(ngModel)]="cabinetNumber">
+    </div>
+    <button class="btn btn-primary" type="button" (click)="register()">Региструј или промени</button>
+    <button class="btn btn-primary" type="button" (click)="delete()">Обриши</button>
+</form>
